@@ -1,4 +1,5 @@
 import express from "express";
+import { requireAuth } from "../middleware/auth.js";
 import { getAllPosts,
         getPost,
         createPost,
@@ -7,6 +8,7 @@ import { getAllPosts,
 } from "../controllers/PostControllers.js";
 
 const router = express.Router();
+router.use(requireAuth);
 
 router.get('/', getAllPosts);
 router.get('/:id', getPost);
